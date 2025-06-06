@@ -23,7 +23,7 @@ export const typeDefs = gql`
     task_id: ID!
     title: String
     description: String
-    fechaEntrega: String
+    fecha_entrega: String
     estado: Estado
     user: User
   }
@@ -31,7 +31,7 @@ export const typeDefs = gql`
   input CreateTask {
     title : String!
     descrition:
-    fechaEntrega : String
+    fecha_entrega : String
     estado : Estado
   }
 
