@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+
+    "target": "ES2020",
+    "module": "commonjs",
+    "moduleResolution": "node",
+
+
+    "strict": true,
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+
+    "noEmitOnError": true,
+
+    
+    "baseUrl": "./src",
+    "paths": {
+      "config": ["config.ts"],
+      "controller/*": ["controller/*"],
+      "middleware/*": ["middleware/*"],
+      "routes/*": ["routes/*"],
+      "schema/*":["schema/*"],
+      "service/*" : ["service/*"],
+      "model/*" : ["model/*"],
+      "utils/*" : ["utils/*"],
+      "app" : ["app.ts"]
+    }
+  
+  },
+  "include": ["src", "test"],
+  "exclude": ["node_modules"]
+}
