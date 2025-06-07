@@ -7,3 +7,4 @@ export interface AuthType{
     password : string,
     rol : Rol
 }
+export type RegisterType = Omit<AuthType, "user_id">;

@@ -7,8 +7,8 @@ export const typeDefs = gql`
     PENDIENTE
   }
   enum Rol {
-    ADMIN
-    USUARIO
+    admin
+    usuario
   }
 
   type User {
@@ -16,8 +16,8 @@ export const typeDefs = gql`
     name: String!
     email: String!
     password: String!
-    rol: Rol!
-  }
+    rol: Rol
+  } 
 
   type Task {
     task_id: ID!
@@ -30,7 +30,7 @@ export const typeDefs = gql`
 
   input CreateTask {
     title : String!
-    descrition:
+    description:String
     fecha_entrega : String
     estado : Estado
   }
@@ -45,21 +45,24 @@ export const typeDefs = gql`
      email: String!
     password: String!
   }
-    input AuthPayload {
-        token : String!,
-        user : User!
-    }
+   type AuthPayload {
+  token: String!
+  user: User!
+}
 
     type Query {
         getAllTask : [Task]
         getTaskById(task_id : ID!) :Task
-        getAllUser : User
+        getAllUser : [User]
         getUseByRol(rol : Rol!):User
+        protectedUser : String
+        
     }
 
     type Mutation {
-      register(input:Register):AuthPayload
-      login(input:Login):AuthPayload
+      register(input:Register!):User
+      login(input:Login!):AuthPayload
+      logout : String
 
       createTask(input:CreateTask):Task
       updateTask(task_id : ID! , input:CreateTask):Task

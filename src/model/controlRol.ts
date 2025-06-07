@@ -21,4 +21,4 @@ export class controlRolAuth {
       throw new Error("Error al obtener el rol_id");
     }
   };
-}
+}  
