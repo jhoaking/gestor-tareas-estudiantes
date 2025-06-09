@@ -47,4 +47,50 @@ export const resolvers = {
       return "Sesión cerrada exitosamente.";
     },
 
- 
+    // task
+
+    createTask: async (_root: any, args: any, context: any) => {
+      if (!context.user) throw new Error("No autorizado");
+
+      const data = validateTask(args.input);
+
+      const task = await taskClass.createTask({
+        ...data,
+        user: context.user.user_id,
+      });
+
+      return task;
+    }, 
+    deleteTask: async (_root: any, args: any) => {
+      const { task_id } = args;
+      const task = await taskClass.deleteTask(task_id);
+      if (!task) {
+        return "No task found";
+      }
+      return "Task deleted";
+    },
+
+    updateTask: async (_root: any, args: any) => {
+      const vali = validateTask(args.input);
+      const { task_id } = args;
+      const newTask = await taskClass.updateTask(vali, task_id);
+      return newTask;
+    },
+  },
+  Query: {
+    protectedUser: (_root: any, _args: any, context: any) => {
+      if (!context.user) {
+        throw new Error("no autorizado");
+      }
+      return `Hola, ${context.user.name}`;
+    },
+    getAllTask: async () => {
+      const task = await taskClass.getAllTask();
+      return task;
+    },
+    getTaskById: async (_root: any, args: any) => {
+      const task = await taskClass.getTaskId(args.task_id);
+      return task;
+    },
+  },
+};
