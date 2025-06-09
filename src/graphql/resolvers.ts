@@ -1,7 +1,9 @@
 import { authService } from "service/authService";
 import { validateRegister, validateLogin } from "schema/authShema";
 import { authClass } from "../model/authModel";
+import { taskClass } from "model/taskModel";
 import { CookieOptions } from "express";
+import { validateTask } from "schema/taskSchema";
 
 const auth = new authService(new authClass());
 
@@ -44,13 +46,5 @@ export const resolvers = {
 
       return "Sesión cerrada exitosamente.";
     },
-  },
-  Query: {
-    protectedUser: (_root: any, _args: any, context: any) => {
-      if (!context.user) {
-        throw new Error("no autorizado");
-      }
-      return `Hola, ${context.user.name}`;
-    },
-  },
-};
+
+ 

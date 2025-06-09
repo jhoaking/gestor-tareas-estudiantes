@@ -43,7 +43,7 @@ export class authClass {
     } catch (error: any) {
       console.error(error);
       throw new Error("Error en el registro");
-    }
+    } 
   };
 
   verifyEmail = async (email: string): Promise<AuthType | null> => {

@@ -2,9 +2,9 @@ import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
   enum Estado {
-    COMPLETADA
-    TERMINADA
-    PENDIENTE
+    completada
+    terminada
+    pendiente
   }
   enum Rol {
     admin
@@ -53,10 +53,7 @@ export const typeDefs = gql`
     type Query {
         getAllTask : [Task]
         getTaskById(task_id : ID!) :Task
-        getAllUser : [User]
-        getUseByRol(rol : Rol!):User
         protectedUser : String
-        
     }
 
     type Mutation {
